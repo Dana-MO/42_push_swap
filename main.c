@@ -1,19 +1,8 @@
-#include "libft/libft.h"
+#include "push_swap.h"
 
-int main(int argc, char **argv)
+int     main(int argc, char **argv)
 {
-    int     i;
-
-    i = 1;
-    if (argc > 1)
-    {
-        while (i < argc)
-        {
-            ft_printf("Number: %s\n", argv[i]);
-            i++;
-        }
-    }
-    else
-        write(2, "Error\n", 6);
+    // understand this passing of argv
+    validate_input(argc, argv);
     return (0);
 }
