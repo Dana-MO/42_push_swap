@@ -66,7 +66,7 @@ void    validate_input(int argc, char **argv)
         while (i < argc)
         {
             num = ft_atol(argv[i]);
-            if (!(num >= INT_MIN && num <= INT_MAX))
+            if (num < INT_MIN || num > INT_MAX)
             {
                 write(2, "Error\n", 6);
                 exit(1);
