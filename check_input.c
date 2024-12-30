@@ -71,7 +71,6 @@ void    validate_input(int argc, char **argv)
                 write(2, "Error\n", 6);
                 exit(1);
             }
-            ft_printf("Number: %s\n", argv[i]);
             i++;
         }
     }
