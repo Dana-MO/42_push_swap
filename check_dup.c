@@ -1,16 +1,20 @@
 #include "push_swap.h"
 
-void    check_dup(t_stack *a, int num)
+void    check_dup(t_stack **a, int num)
 {
-    if (a == NULL)
+    t_stack     *temp;
+
+    temp = *a;
+    if (temp == NULL)
         return ;
-    while (a)
+    while (temp)
     {
-        if (a->value == num)
+        if (temp->value == num)
         {
+            ft_stackclear(a);
             ft_printf("Error\n");
             exit(1);
         }
-        a = a->next;
+        temp = temp->next;
     }
 }

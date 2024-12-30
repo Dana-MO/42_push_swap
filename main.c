@@ -4,17 +4,19 @@ int     main(int argc, char **argv)
 {
     t_stack     *a;
     t_stack     *b;
+    t_stack     *temp;
 
     a = NULL;
     b = NULL;
     // clean up validate input file
     validate_input(argc, argv);
-    // if an error occurs or if we are done stack a needs to be freed
     stack_init(&a, argc, argv);
-    while (a)
+    temp = a;
+    while (temp)
     {
-        printf("Number: %d\n", a->value);
-        a = a->next;
+        printf("Number: %d\n", temp->value);
+        temp = temp->next;
     }
+    ft_stackclear(&a);
     return (0);
 }
