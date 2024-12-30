@@ -1,5 +1,23 @@
 #include "push_swap.h"
 
+/* free stack */
+void    ft_stackclear(t_stack **stack)
+{
+    t_stack  *current;
+    t_stack  *temp;
+
+    if (!stack)
+            return ;
+    current = *stack;
+    while (current != NULL)
+    {
+            temp = current;
+            current = current->next;
+            free(temp);
+    }
+    *stack = NULL;
+}
+
 /* create a new node */
 static t_stack	*ft_stacknew(int value)
 {
@@ -42,10 +60,11 @@ void    stack_init(t_stack **a, int argc, char **argv)
     while (i < argc)
     {
         num = ft_atoi(argv[i]);
-        check_dup(*a, num);
+        check_dup(a, num);
         node = ft_stacknew(num);
         if (!node)
         {
+            ft_stackclear(a);
             ft_printf("Failed to create new node.\n");
             exit(1);
         }
