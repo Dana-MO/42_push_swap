@@ -42,6 +42,7 @@ void    stack_init(t_stack **a, int argc, char **argv)
     while (i < argc)
     {
         num = ft_atoi(argv[i]);
+        check_dup(*a, num);
         node = ft_stacknew(num);
         if (!node)
         {
