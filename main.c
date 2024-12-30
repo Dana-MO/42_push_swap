@@ -9,6 +9,7 @@ int     main(int argc, char **argv)
     b = NULL;
     // clean up validate input file
     validate_input(argc, argv);
+    // if an error occurs or if we are done stack a needs to be freed
     stack_init(&a, argc, argv);
     while (a)
     {
