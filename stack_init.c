@@ -49,7 +49,6 @@ static void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	temp->next = new;
 }
 
-// why a pointer to a pointer **a 
 void    stack_init(t_stack **a, int argc, char **argv)
 {
     int i;
