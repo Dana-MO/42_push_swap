@@ -17,39 +17,32 @@ int     ft_stacklen(t_stack **a)
     return (len);
 }
 
-/* Swap */
-
-// swap first 2 elements at the top of stack a
+/* Swap first 2 elements at the top of a stack */
 
 void    swap(t_stack **stack)
 {
     int len;
     t_stack *new_head;
-    t_stack *temp;
     t_stack *old_head;
+    t_stack *third_node;
 
-    temp = NULL;
+    third_node = NULL;
     len = ft_stacklen(stack);
     // we could also do it like this
     // if (!*stack || !(*stack)->next)
     if (*stack == NULL || len == 1)
         return ;
 
-    *stack = (*stack)->next;        // now second node is head
-    new_head = *stack;                  // hold onto the head
-    old_head = (*stack)->prev;
-    (*stack)->prev = NULL;         // because nothing is before it
-    if ((*stack)->next)
-        temp = (*stack)->next;
-    (*stack)->next = old_head;    // points to what was previously the 1st node
-    *stack = (*stack)->next;       // move to new 2nd node
-    (*stack)->prev = new_head;         // first node
-    (*stack)->next = temp;
-    temp = *stack;
-    if (len > 2)
-    {
-        *stack = (*stack)->next;  // move to the 3rd node
-        (*stack)->prev = temp;    // the new 2nd node
-    }
+    old_head = *stack;
+    new_head = (*stack)->next;
     *stack = new_head;
+    new_head->prev = NULL;
+    if (new_head->next)
+    {
+        third_node = new_head->next;
+        third_node->prev = old_head;
+    }
+    new_head->next = old_head;
+    old_head->prev = new_head;
+    old_head->next = third_node;
 }
