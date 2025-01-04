@@ -24,8 +24,9 @@ int     ft_stacklen(t_stack **a)
 void    swap(t_stack **stack)
 {
     int len;
-    t_stack *head;
+    t_stack *new_head;
     t_stack *temp;
+    t_stack *old_head;
 
     temp = NULL;
     len = ft_stacklen(stack);
@@ -34,25 +35,21 @@ void    swap(t_stack **stack)
     if (*stack == NULL || len == 1)
         return ;
 
-    // *stack = head-next;
-    //head = *stack; // aka the first node
-    *stack = (*stack)->next; // now the second node is the head
-    //head = *stack; // hold onto this
-    head = (*stack)->prev;
-    (*stack)->prev = NULL; // because nothing is before it
+    *stack = (*stack)->next;        // now second node is head
+    new_head = *stack;                  // hold onto the head
+    old_head = (*stack)->prev;
+    (*stack)->prev = NULL;         // because nothing is before it
     if ((*stack)->next)
         temp = (*stack)->next;
-    (*stack)->next = head; // points to what was previously the 1st node
-    head = *stack;
-    *stack = (*stack)->next; // move to new 2nd node
-    (*stack)->prev = head; // first node
+    (*stack)->next = old_head;    // points to what was previously the 1st node
+    *stack = (*stack)->next;       // move to new 2nd node
+    (*stack)->prev = new_head;         // first node
     (*stack)->next = temp;
     temp = *stack;
     if (len > 2)
     {
-        *stack = (*stack)->next; // move to the 3rd node
-        (*stack)->prev = temp;// the new 2nd node
-        *stack = (*stack)->prev;
+        *stack = (*stack)->next;  // move to the 3rd node
+        (*stack)->prev = temp;    // the new 2nd node
     }
-    *stack = (*stack)->prev;
+    *stack = new_head;
 }
