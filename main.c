@@ -40,6 +40,10 @@ int     main(int argc, char **argv)
     stack_init(&a, argc, argv);
     temp = a;
     print_stack(temp);
+    printf("Swap\n");
+    swap(&a);
+    temp = a;
+    print_stack(temp);
     temp = a;
     print_stack_reverse(temp);
     // while (temp)
