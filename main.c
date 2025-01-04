@@ -41,7 +41,7 @@ int     main(int argc, char **argv)
     temp = a;
     print_stack(temp);
     printf("Swap\n");
-    swap(&a);
+    sa(&a);
     temp = a;
     print_stack(temp);
     temp = a;

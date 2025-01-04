@@ -46,3 +46,24 @@ void    swap(t_stack **stack)
     old_head->prev = new_head;
     old_head->next = third_node;
 }
+
+void    sa(t_stack **a)
+{
+    swap(a);
+    write(1, "sa\n", 3);
+}
+
+// test if it works
+void    sb(t_stack **b)
+{
+    swap(b);
+    write(1, "sb\n", 3);
+}
+
+// test if it works
+void    ss(t_stack **a, t_stack **b)
+{
+    swap(a);
+    swap(b);
+    write(1, "ss\n", 3);
+}

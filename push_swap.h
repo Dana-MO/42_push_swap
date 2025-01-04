@@ -16,6 +16,8 @@ void    stack_init(t_stack **a, int argc, char **argv);
 void    check_dup(t_stack **a, int num);
 void    ft_stackclear(t_stack **stack);
 
-void    swap(t_stack **stack);
+void    sa(t_stack **a);
+void    sb(t_stack **b);
+void    ss(t_stack **a, t_stack **b);
 
 #endif
