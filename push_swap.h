@@ -8,6 +8,7 @@ typedef struct n_stack
 {
 	int             value;
 	struct n_stack	*next;
+	struct n_stack	*prev;
 }		t_stack;
 
 void    validate_input(int argc, char **argv);

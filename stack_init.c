@@ -19,7 +19,7 @@ void    ft_stackclear(t_stack **stack)
 }
 
 /* create a new node */
-static t_stack	*ft_stacknew(int value)
+static t_stack	*ft_createnode(int value)
 {
 	t_stack	*node;
 
@@ -31,36 +31,55 @@ static t_stack	*ft_stacknew(int value)
 	return (node);
 }
 
-/* add new node to end of stack */
-static void	ft_stackadd_back(t_stack **stack, t_stack *new)
+/* last node in stack */
+// don't need might delete
+t_stack *ft_lastnode(t_stack **stack)
 {
-	t_stack	*temp;
+    t_stack *temp;
 
-	if (!stack || !new)
-		return ;
-	if (*stack == NULL)
-	{
-		*stack = new;
-		return ;
-	}
+    if (!*stack)
+        return (NULL);
     temp = *stack;
     while (temp->next)
         temp = temp->next;
-	temp->next = new;
+    return (temp);
+}
+
+/* add new node to end of stack */
+static void	ft_stackadd_back(t_stack **stack, t_stack *node)
+{
+	t_stack	*temp;
+    t_stack *last_node;
+
+	if (!stack || !node)
+		return ;
+	if (*stack == NULL)
+	{
+		*stack = node;
+        node->prev = NULL;
+		return ;
+	}
+    // for optimization, instead of pointing to the head
+    temp = *stack;
+    while (temp->next)
+        temp = temp->next;
+    last_node = temp;
+	temp->next = node;
+    node->prev = last_node;
 }
 
 void    stack_init(t_stack **a, int argc, char **argv)
 {
     int i;
     int num;
-    t_stack *node; //node is a pointer to a s_stack structure
+    t_stack *node;
 
     i = 1;
     while (i < argc)
     {
         num = ft_atoi(argv[i]);
         check_dup(a, num);
-        node = ft_stacknew(num);
+        node = ft_createnode(num);
         if (!node)
         {
             ft_stackclear(a);
