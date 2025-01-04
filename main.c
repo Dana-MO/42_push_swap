@@ -40,8 +40,8 @@ int     main(int argc, char **argv)
     stack_init(&a, argc, argv);
     temp = a;
     print_stack(temp);
-    printf("Rotate\n");
-    ra(&a);
+    printf("Reverse\n");
+    rra(&a);
     temp = a;
     print_stack(temp);
     temp = a;
