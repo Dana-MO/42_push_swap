@@ -1,7 +1,7 @@
 #include "push_swap.h"
 
 /* Stack Length */
-
+// we might not end up needing this function
 int     ft_stacklen(t_stack **a)
 {
     int len;
