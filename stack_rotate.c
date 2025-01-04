@@ -13,7 +13,7 @@ void rotate(t_stack **stack)
     new_head->prev = NULL;
     // we could add a helper function for the last node
     last_node = new_head;
-    while(last_node->next)
+    while (last_node->next)
         last_node = last_node->next;
     last_node->next = old_head;
     old_head->prev = last_node;
