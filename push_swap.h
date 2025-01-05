@@ -31,4 +31,6 @@ void    rrr(t_stack **a, t_stack **b);
 void    pa(t_stack **b, t_stack **a);
 void    pb(t_stack **a, t_stack **b);
 
+int     ft_stacklen(t_stack **a);
+
 #endif
