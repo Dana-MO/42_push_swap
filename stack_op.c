@@ -2,7 +2,7 @@
 
 /* Swap first 2 elements at the top of a stack */
 
-void    swap(t_stack **stack)
+static void    swap(t_stack **stack)
 {
     t_stack *new_head;
     t_stack *old_head;
