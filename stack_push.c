@@ -1,7 +1,7 @@
 #include "push_swap.h"
 
 /* Add node to top of stack */
-void ft_stackadd_top(t_stack **stack, t_stack *node)
+static void ft_stackadd_top(t_stack **stack, t_stack *node)
 {
     t_stack *temp;
 
@@ -18,7 +18,7 @@ void ft_stackadd_top(t_stack **stack, t_stack *node)
     }
 }
 
-void    push(t_stack **stack_one, t_stack **stack_two)
+static void    push(t_stack **stack_one, t_stack **stack_two)
 {
     t_stack *node;
 

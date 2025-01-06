@@ -26,12 +26,14 @@ static void    swap(t_stack **stack)
     old_head->next = third_node;
 }
 
+/* Swap first 2 elements at the top of stack a*/
 void    sa(t_stack **a)
 {
     swap(a);
     write(1, "sa\n", 3);
 }
 
+/* Swap first 2 elements at the top of stack b*/
 // test if it works
 void    sb(t_stack **b)
 {
@@ -39,6 +41,7 @@ void    sb(t_stack **b)
     write(1, "sb\n", 3);
 }
 
+/* Swap first 2 elements at the top of stack a and stack b*/
 // test if it works
 void    ss(t_stack **a, t_stack **b)
 {
