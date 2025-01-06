@@ -25,8 +25,13 @@ static void    push(t_stack **stack_one, t_stack **stack_two)
     if (!*stack_one)
         return ;
     node = *stack_one;
-    *stack_one = (*stack_one)->next;
-    (*stack_one)->prev = NULL;
+    if ((*stack_one)->next)
+    {
+        *stack_one = (*stack_one)->next;
+        (*stack_one)->prev = NULL;
+    }
+    else
+        *stack_one = NULL;
     ft_stackadd_top(stack_two, node);
 }
 
