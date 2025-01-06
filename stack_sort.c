@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-/* sort in case of 2 nodes */
+/* sort 2 nodes */
 static void    mini_sort(t_stack **a)
 {
     t_stack *node_one;
@@ -14,7 +14,7 @@ static void    mini_sort(t_stack **a)
         sa(a);
 }
 
-/* sort in case of 3 nodes */
+/* sort a stack of 3 nodes */
 static void    sort_three(t_stack **a)
 {
     t_stack *node_two;
@@ -32,6 +32,7 @@ static void    sort_three(t_stack **a)
     }
 }
 
+/* sort a stack of 4 nodes */
 static void     sort_four(t_stack **a, t_stack **b)
 {
     t_stack *smallest_node;
@@ -58,7 +59,7 @@ static void     sort_four(t_stack **a, t_stack **b)
 void    sort(t_stack **a, t_stack **b)
 {
     int len;
-
+    
     len = ft_stacklen(a);
     if (len == 2)
         mini_sort(a);
