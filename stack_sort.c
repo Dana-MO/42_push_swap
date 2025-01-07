@@ -39,46 +39,20 @@ static void    sort_three(t_stack **a)
     }
 }
 
-/* sort a stack of 4 nodes */
-static void     sort_four(t_stack **a, t_stack **b)
+/* sort a stack of 4 nodes and above */
+static void     sort_multiple(t_stack **a, t_stack **b, int len)
 {
     if (!*a)
         return ;
-    smallest_node(a);
-    pb(a, b);
+    while (len > 3)
+    {
+        smallest_node(a);
+        pb(a, b);
+        len--;
+    }
     sort_three(a);
-    pa(b, a);
-}
-
-/* sort a stack of 5 nodes */
-static void     sort_five(t_stack **a, t_stack **b)
-{
-    if (!*a)
-        return ;
-    smallest_node(a);
-    pb(a, b);
-    smallest_node(a);
-    pb(a, b);
-    sort_three(a);
-    pa(b, a);
-    pa(b, a);
-}
-
-/* sort a stack of 6 nodes */
-static void     sort_six(t_stack **a, t_stack **b)
-{
-    if (!*a)
-        return ;
-    smallest_node(a);
-    pb(a, b);
-    smallest_node(a);
-    pb(a, b);
-    smallest_node(a);
-    pb(a, b);
-    sort_three(a);
-    pa(b, a);
-    pa(b, a);
-    pa(b, a);
+    while (*b)
+        pa(b, a);
 }
 
 /* check if stack is sorted */
@@ -109,10 +83,6 @@ void    sort(t_stack **a, t_stack **b)
         mini_sort(a);
     if (len == 3)
         sort_three(a);
-    if (len == 4)
-        sort_four(a, b);
-    if (len == 5)
-        sort_five(a, b);
-    if (len == 6)
-        sort_six(a, b);
+    if (len > 3)
+        sort_multiple(a, b, len);
 }
