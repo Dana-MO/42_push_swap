@@ -81,10 +81,29 @@ static void     sort_six(t_stack **a, t_stack **b)
     pa(b, a);
 }
 
+/* check if stack is sorted */
+static void    check_sort(t_stack **a)
+{
+    t_stack *node;
+
+    if (!*a)
+        exit(1);
+    node = *a;
+    while (node)
+    {
+        if (node->next != NULL && node->value > node->next->value)
+            break;            
+        node = node->next;
+    }
+    if (node == NULL)
+        exit(0);
+}
+
 void    sort(t_stack **a, t_stack **b)
 {
     int len;
 
+    check_sort(a);
     len = ft_stacklen(a);
     if (len == 2)
         mini_sort(a);
