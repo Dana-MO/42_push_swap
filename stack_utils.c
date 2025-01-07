@@ -21,26 +21,26 @@ void    smallest_node(t_stack **stack)
 {
     t_stack *smallest;
     t_stack *node;
+    int rotations;
 
+    rotations = 0;
     smallest = *stack;
     node = (*stack)->next;
     while (node)
     {
-        if (smallest->value > node->value)
-            smallest = node;
-        node = node->next;
-    }
-    node = *stack;
-    if (smallest->next == NULL)
-        rra(stack);
-    else
-    {
-        while (node)
+        if (node->value < smallest->value)
         {
-            if (node->value == smallest->value)
-                break;
-            node = node->next;
-            ra(stack);
+            smallest = node;
+            rotations = 0;
         }
+        node = node->next;
+        rotations++;
+    }
+    while (*stack != smallest)
+    {
+        if (rotations > 0)
+            ra(stack);
+        else
+            rra(stack);
     }
 }
