@@ -1,36 +1,15 @@
 #include "push_swap.h"
 
-/* Stack Length */
-// we might not end up needing this function
-int     ft_stacklen(t_stack **a)
-{
-    int len;
-    t_stack *temp;
-
-    len = 0;
-    temp = *a;
-    while (temp != NULL)
-    {
-        len++;
-        temp = temp->next;
-    }
-    return (len);
-}
-
 /* Swap first 2 elements at the top of a stack */
 
-void    swap(t_stack **stack)
+static void    swap(t_stack **stack)
 {
-    int len;
     t_stack *new_head;
     t_stack *old_head;
     t_stack *third_node;
 
     third_node = NULL;
-    len = ft_stacklen(stack);
-    // we could also do it like this
-    // if (!*stack || !(*stack)->next)
-    if (*stack == NULL || len == 1)
+    if (!*stack || !(*stack)->next)
         return ;
 
     old_head = *stack;
@@ -47,12 +26,14 @@ void    swap(t_stack **stack)
     old_head->next = third_node;
 }
 
+/* Swap first 2 elements at the top of stack a*/
 void    sa(t_stack **a)
 {
     swap(a);
     write(1, "sa\n", 3);
 }
 
+/* Swap first 2 elements at the top of stack b*/
 // test if it works
 void    sb(t_stack **b)
 {
@@ -60,6 +41,7 @@ void    sb(t_stack **b)
     write(1, "sb\n", 3);
 }
 
+/* Swap first 2 elements at the top of stack a and stack b*/
 // test if it works
 void    ss(t_stack **a, t_stack **b)
 {
