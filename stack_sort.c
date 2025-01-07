@@ -81,8 +81,8 @@ void    sort(t_stack **a, t_stack **b)
     len = ft_stacklen(a);
     if (len == 2)
         mini_sort(a);
-    if (len == 3)
+    else if (len == 3)
         sort_three(a);
-    if (len > 3)
+    else if (len > 3)
         sort_multiple(a, b, len);
 }
