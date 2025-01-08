@@ -1,8 +1,7 @@
 #include "push_swap.h"
 
 /* check that all inputs are integers */
-
-int     check_int(int argc, char **argv)
+static int     check_int(int argc, char **argv)
 {
     int i;
     int e;
@@ -27,8 +26,7 @@ int     check_int(int argc, char **argv)
 }
 
 /* convert input to long */
-
-long	ft_atol(const char *str)
+static long	    ft_atol(const char *str)
 {
 	int	i;
 	int	sign;
