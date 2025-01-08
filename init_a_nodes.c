@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+/* assign an index value to each node */
 void       current_index(t_stack *stack)
 {
     int i;
@@ -8,7 +9,7 @@ void       current_index(t_stack *stack)
     i = 0;
     if (!stack)
         return ;
-    median = ft_stacklen(stack) / 2;
+    median = stack_len(stack) / 2;
     while (stack)
     {
         stack->index = i;
@@ -21,6 +22,7 @@ void       current_index(t_stack *stack)
     }
 }
 
+/* assign each node in 'stack a' target node from stack b */
 static void     set_target_a(t_stack *a, t_stack *b)
 {
     t_stack *current_b;
@@ -49,14 +51,14 @@ static void     set_target_a(t_stack *a, t_stack *b)
     }
 }
 
-// come back to understand this part
+/* assign each node in 'stack a' push cost */
 static void     cost_analysis(t_stack *a, t_stack *b)
 {
     int len_a;
     int len_b;
 
-    len_a = ft_stacklen(a);
-    len_b = ft_stacklen(b);
+    len_a = stack_len(a);
+    len_b = stack_len(b);
     while (a)
     {
         a->push_cost = a->index;
@@ -71,13 +73,14 @@ static void     cost_analysis(t_stack *a, t_stack *b)
     }
 }
 
-void    set_cheapest(t_stack *stack)
+/* return node with cheapest push cost */
+t_stack    *set_cheapest(t_stack *stack)
 {
     int     cheapest_value;
     t_stack *cheapest_node;
 
     if (!stack)
-        return ;
+        return (NULL);
     cheapest_value = INT_MAX;
     while (stack)
     {
@@ -89,14 +92,18 @@ void    set_cheapest(t_stack *stack)
         stack = stack->next;
     }
     cheapest_node->cheapest = true;
+    return (cheapest_node);
 }
 
-/* initiate nodes in stack a */
-void    init_a_nodes(t_stack *a, t_stack *b)
+/* initiate nodes in 'stack a' and return node with cheapest push cost */
+t_stack    *init_a_nodes(t_stack *a, t_stack *b)
 {
+    t_stack *cheapest;
+    
     current_index(a);
     current_index(b);
     set_target_a(a, b);
     cost_analysis(a, b);
-    set_cheapest(a);
+    cheapest = set_cheapest(a);
+    return (cheapest);
 }

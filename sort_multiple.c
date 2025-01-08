@@ -1,17 +1,17 @@
 #include "push_swap.h"
 
-t_stack     *get_cheapest(t_stack *stack)
-{
-    if (!stack)
-        return (NULL);
-    while (stack)
-    {
-        if (stack->cheapest)
-            return (stack);
-        stack = stack->next;
-    }
-    return (NULL);
-}
+// t_stack     *get_cheapest(t_stack *stack)
+// {
+//     if (!stack)
+//         return (NULL);
+//     while (stack)
+//     {
+//         if (stack->cheapest)
+//             return (stack);
+//         stack = stack->next;
+//     }
+//     return (NULL);
+// }
 
 static void rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
@@ -52,11 +52,11 @@ void    prep_for_push(t_stack **stack, t_stack *top_node, char stack_name)
     }
 }
 
-static void     move_a_to_b(t_stack **a, t_stack **b)
+static void     move_a_to_b(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
-    t_stack *cheapest_node;
+    //t_stack *cheapest_node;
 
-    cheapest_node = get_cheapest(*a);
+    //cheapest_node = get_cheapest(*a);
     if (cheapest_node->above_median && cheapest_node->target_node->above_median)
         rotate_both(a, b, cheapest_node);
     else if (!(cheapest_node->above_median)
@@ -87,20 +87,22 @@ static void     min_on_top(t_stack **a)
 
 void    sort_multiple(t_stack **a, t_stack **b, int stack_len)
 {
+    t_stack *cheapest_node;
+    
+    cheapest_node = NULL;
     if (!*a)
         return ;
-    if (stack_len-- > 3)
-        pb(a, b);
-    if (stack_len-- > 3)
-        pb(a, b);
+    pb(a, b);
+    if (--stack_len > 3)
+        pb(a, b); 
     // add a check to see if stack is sorted
-    while (stack_len-- > 3)
+    while (--stack_len > 3)
     {
-        init_a_nodes(*a, *b);
-        move_a_to_b(a, b);
+        cheapest_node = init_a_nodes(*a, *b);
+        move_a_to_b(a, b, cheapest_node);
     }
     sort_three(a);
-    while(*b)
+    while (*b)
     {
         init_b_nodes(*a, *b);
         move_b_to_a(a, b);

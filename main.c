@@ -60,6 +60,7 @@ int     main(int argc, char **argv)
     print_stack_reverse(temp_a);
     print_stack_reverse(temp_b);
 
+    // this function might be moved to a different file than stack init
     ft_stackclear(&a);
     ft_stackclear(&b);
     return (0);

@@ -1,22 +1,7 @@
 #include "push_swap.h"
 
 /* Stack Length */
-// int     ft_stacklen(t_stack **stack)
-// {
-//     int len;
-//     t_stack *temp;
-
-//     len = 0;
-//     temp = *stack;
-//     while (temp != NULL)
-//     {
-//         len++;
-//         temp = temp->next;
-//     }
-//     return (len);
-// }
-
-int     ft_stacklen(t_stack *stack)
+int     stack_len(t_stack *stack)
 {
     int len;
 
@@ -27,6 +12,20 @@ int     ft_stacklen(t_stack *stack)
         stack = stack->next;
     }
     return (len);
+}
+
+/* last node in stack */
+// don't need might delete
+t_stack *ft_lastnode(t_stack **stack)
+{
+    t_stack *temp;
+
+    if (!*stack)
+        return (NULL);
+    temp = *stack;
+    while (temp->next)
+        temp = temp->next;
+    return (temp);
 }
 
 /* places node with smallest value at the top of the stack*/
