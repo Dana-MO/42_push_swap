@@ -39,22 +39,6 @@ void    sort_three(t_stack **a)
     }
 }
 
-/* sort a stack of 4 nodes and above */
-static void     sort_four(t_stack **a, t_stack **b, int len)
-{
-    if (!*a)
-        return ;
-    while (len > 3)
-    {
-        smallest_node(a);
-        pb(a, b);
-        len--;
-    }
-    sort_three(a);
-    while (*b)
-        pa(b, a);
-}
-
 /* check if stack is sorted */
 void    check_sort(t_stack **a)
 {
@@ -78,13 +62,11 @@ void    sort(t_stack **a, t_stack **b)
     int len;
 
     check_sort(a);
-    len = ft_stacklen(*a); //changed
+    len = stack_len(*a);
     if (len == 2)
         mini_sort(a);
     else if (len == 3)
         sort_three(a);
-    else if (len == 4)
-        sort_four(a, b, len);
     else
         sort_multiple(a, b, len);
 }
