@@ -6,9 +6,21 @@
 #include <limits.h>
 #include <stdbool.h>
 
+// typedef struct n_stack
+// {
+// 	int             value;
+// 	struct n_stack	*next;
+// 	struct n_stack	*prev;
+// }		t_stack;
+
 typedef struct n_stack
 {
 	int             value;
+	int				index;
+	int				push_cost;
+	bool			above_median;
+	bool			cheapest;
+	struct n_stack	*target_node;
 	struct n_stack	*next;
 	struct n_stack	*prev;
 }		t_stack;
@@ -33,10 +45,18 @@ void    rrr(t_stack **a, t_stack **b);
 void    pa(t_stack **b, t_stack **a);
 void    pb(t_stack **a, t_stack **b);
 
-int     ft_stacklen(t_stack **stack);
+int     ft_stacklen(t_stack *stack);
 void    smallest_node(t_stack **stack);
+t_stack    *find_max(t_stack *stack);
+t_stack    *find_min(t_stack *stack);
 
+void    check_sort(t_stack **a);
 void    sort(t_stack **a, t_stack **b);
-void    sort_multiple(t_stack **a, t_stack **b);
+void    sort_three(t_stack **a);
+void    sort_multiple(t_stack **a, t_stack **b, int len);
+
+void       current_index(t_stack *stack);
+void    init_a_nodes(t_stack *a, t_stack *b);
+void    init_b_nodes(t_stack *a, t_stack *b);
 
 #endif

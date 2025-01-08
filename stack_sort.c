@@ -16,7 +16,7 @@ static void    mini_sort(t_stack **a)
 
 /* sort a stack of 3 nodes */
 // may come back to clean function 
-static void    sort_three(t_stack **a)
+void    sort_three(t_stack **a)
 {
     t_stack *node_one;
     t_stack *node_two;
@@ -56,7 +56,7 @@ static void     sort_four(t_stack **a, t_stack **b, int len)
 }
 
 /* check if stack is sorted */
-static void    check_sort(t_stack **a)
+void    check_sort(t_stack **a)
 {
     t_stack *node;
 
@@ -78,7 +78,7 @@ void    sort(t_stack **a, t_stack **b)
     int len;
 
     check_sort(a);
-    len = ft_stacklen(a);
+    len = ft_stacklen(*a); //changed
     if (len == 2)
         mini_sort(a);
     else if (len == 3)
@@ -86,5 +86,5 @@ void    sort(t_stack **a, t_stack **b)
     else if (len == 4)
         sort_four(a, b, len);
     else
-        sort_multiple(a, b);
+        sort_multiple(a, b, len);
 }
