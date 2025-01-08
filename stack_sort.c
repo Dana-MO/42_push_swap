@@ -40,7 +40,7 @@ static void    sort_three(t_stack **a)
 }
 
 /* sort a stack of 4 nodes and above */
-static void     sort_multiple(t_stack **a, t_stack **b, int len)
+static void     sort_four(t_stack **a, t_stack **b, int len)
 {
     if (!*a)
         return ;
@@ -83,6 +83,8 @@ void    sort(t_stack **a, t_stack **b)
         mini_sort(a);
     else if (len == 3)
         sort_three(a);
-    else if (len > 3)
-        sort_multiple(a, b, len);
+    else if (len == 4)
+        sort_four(a, b, len);
+    else
+        sort_multiple(a, b);
 }
