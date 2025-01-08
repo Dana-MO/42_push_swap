@@ -65,7 +65,7 @@ static void     cost_analysis(t_stack *a, t_stack *b)
         if (!(a->above_median))
             a->push_cost = len_a - (a->index);
         // I don't understand this part
-        if (!(a->target_node->above_median))
+        if (a->target_node->above_median)
             a->push_cost += a->target_node->index;
         else
             a->push_cost += len_b - (a->target_node->index);
