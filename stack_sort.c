@@ -40,20 +40,17 @@ void    sort_three(t_stack **a)
 }
 
 /* check if stack is sorted */
-void    check_sort(t_stack **a)
+void    check_sort(t_stack *a)
 {
-    t_stack *node;
-
-    if (!*a)
+    if (!a)
         exit(1);
-    node = *a;
-    while (node)
+    while (a)
     {
-        if (node->next != NULL && node->value > node->next->value)
+        if (a->next != NULL && a->value > a->next->value)
             break;            
-        node = node->next;
+        a = a->next;
     }
-    if (node == NULL)
+    if (a == NULL)
         exit(0);
 }
 
@@ -61,7 +58,7 @@ void    sort(t_stack **a, t_stack **b)
 {
     int len;
 
-    check_sort(a);
+    check_sort(*a);
     len = stack_len(*a);
     if (len == 2)
         mini_sort(a);

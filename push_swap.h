@@ -45,12 +45,12 @@ void    rrr(t_stack **a, t_stack **b);
 void    pa(t_stack **b, t_stack **a);
 void    pb(t_stack **a, t_stack **b);
 
-int     ft_stacklen(t_stack *stack);
+int     stack_len(t_stack *stack);
 void    smallest_node(t_stack **stack);
 t_stack    *find_max(t_stack *stack);
 t_stack    *find_min(t_stack *stack);
 
-void    check_sort(t_stack **a);
+void    check_sort(t_stack *a);
 void    sort(t_stack **a, t_stack **b);
 void    sort_three(t_stack **a);
 void    sort_multiple(t_stack **a, t_stack **b, int len);
