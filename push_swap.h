@@ -3,6 +3,8 @@
 
 #include "libft/libft.h"
 #include <stdlib.h>
+#include <limits.h>
+#include <stdbool.h>
 
 typedef struct n_stack
 {
@@ -35,5 +37,6 @@ int     ft_stacklen(t_stack **stack);
 void    smallest_node(t_stack **stack);
 
 void    sort(t_stack **a, t_stack **b);
+void    sort_multiple(t_stack **a, t_stack **b);
 
 #endif

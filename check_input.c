@@ -1,6 +1,4 @@
 #include "push_swap.h"
-#include <limits.h>
-// check if limits.h is allowed
 
 /* check that all inputs are integers */
 
