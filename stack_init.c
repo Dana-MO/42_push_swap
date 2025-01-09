@@ -31,7 +31,6 @@ static t_stack	*ft_createnode(int value)
 	return (node);
 }
 
-
 /* add new node to end of stack */
 static void	ft_stackadd_back(t_stack **stack, t_stack *node)
 {
@@ -75,25 +74,27 @@ void    check_dup(t_stack **a, int num)
     }
 }
 
-void    stack_init(t_stack **a, int argc, char **argv)
+void    stack_init(t_stack **a, int argc, char **arr)
 {
     int i;
     int num;
     t_stack *node;
 
-    i = 1;
-    while (i < argc)
+    i = 0;
+    while (arr[i])
     {
-        num = ft_atoi(argv[i]);
+        num = ft_atoi(arr[i]);
         check_dup(a, num);
         node = ft_createnode(num);
         if (!node)
         {
             ft_stackclear(a);
-            ft_printf("Failed to create new node.\n");
-            exit(1);
+            break;
+            //exit(1);
         }
         ft_stackadd_back(a, node);
         i++;
     }
+    if (argc == 2)
+        free_arr(arr);
 }
