@@ -75,16 +75,16 @@ void    check_dup(t_stack **a, int num)
     }
 }
 
-void    stack_init(t_stack **a, int argc, char **argv)
+void    stack_init(t_stack **a, char **arr)
 {
     int i;
     int num;
     t_stack *node;
 
-    i = 1;
-    while (i < argc)
+    i = 0;
+    while (arr[i])
     {
-        num = ft_atoi(argv[i]);
+        num = ft_atoi(arr[i]);
         check_dup(a, num);
         node = ft_createnode(num);
         if (!node)
