@@ -65,6 +65,7 @@ void    sort_multiple(t_stack **a, t_stack **b, int stack_len)
         cheapest_node = init_a_nodes(*a, *b);
         move_a_to_b(a, b, cheapest_node);
     }
+    // should I add a check here to run this command if stack_len == 3
     sort_three(a);
     while (*b)
     {

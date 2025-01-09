@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+/* assign each node in 'stack b' a target from 'stack a' */
 static void set_target_b(t_stack *a, t_stack *b)
 {
     t_stack *current_a;
