@@ -14,9 +14,8 @@ static void    mini_sort(t_stack **a)
         sa(a);
 }
 
-/* sort a stack of 3 nodes */
-// may come back to clean function 
-static void    sort_three(t_stack **a)
+/* sort a stack of 3 nodes */ 
+void    sort_three(t_stack **a)
 {
     t_stack *node_one;
     t_stack *node_two;
@@ -39,37 +38,18 @@ static void    sort_three(t_stack **a)
     }
 }
 
-/* sort a stack of 4 nodes and above */
-static void     sort_multiple(t_stack **a, t_stack **b, int len)
-{
-    if (!*a)
-        return ;
-    while (len > 3)
-    {
-        smallest_node(a);
-        pb(a, b);
-        len--;
-    }
-    sort_three(a);
-    while (*b)
-        pa(b, a);
-}
-
 /* check if stack is sorted */
-static void    check_sort(t_stack **a)
+void    check_sort(t_stack *a)
 {
-    t_stack *node;
-
-    if (!*a)
+    if (!a)
         exit(1);
-    node = *a;
-    while (node)
+    while (a)
     {
-        if (node->next != NULL && node->value > node->next->value)
+        if (a->next != NULL && a->value > a->next->value)
             break;            
-        node = node->next;
+        a = a->next;
     }
-    if (node == NULL)
+    if (a == NULL)
         exit(0);
 }
 
@@ -77,12 +57,12 @@ void    sort(t_stack **a, t_stack **b)
 {
     int len;
 
-    check_sort(a);
-    len = ft_stacklen(a);
+    check_sort(*a);
+    len = stack_len(*a);
     if (len == 2)
         mini_sort(a);
     else if (len == 3)
         sort_three(a);
-    else if (len > 3)
+    else
         sort_multiple(a, b, len);
 }

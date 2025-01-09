@@ -31,19 +31,6 @@ static t_stack	*ft_createnode(int value)
 	return (node);
 }
 
-/* last node in stack */
-// don't need might delete
-t_stack *ft_lastnode(t_stack **stack)
-{
-    t_stack *temp;
-
-    if (!*stack)
-        return (NULL);
-    temp = *stack;
-    while (temp->next)
-        temp = temp->next;
-    return (temp);
-}
 
 /* add new node to end of stack */
 static void	ft_stackadd_back(t_stack **stack, t_stack *node)
@@ -66,6 +53,26 @@ static void	ft_stackadd_back(t_stack **stack, t_stack *node)
     last_node = temp;
 	temp->next = node;
     node->prev = last_node;
+}
+
+/* check for duplicate integers */
+void    check_dup(t_stack **a, int num)
+{
+    t_stack     *temp;
+
+    temp = *a;
+    if (temp == NULL)
+        return ;
+    while (temp)
+    {
+        if (temp->value == num)
+        {
+            ft_stackclear(a);
+            ft_printf("Error\n");
+            exit(1);
+        }
+        temp = temp->next;
+    }
 }
 
 void    stack_init(t_stack **a, int argc, char **argv)
