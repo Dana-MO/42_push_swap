@@ -1,24 +1,50 @@
 #include "push_swap.h"
 
+/* free array */
+void    free_arr(char **arr)
+{
+    int i;
+
+    i = 0;
+    while (arr[i])
+    {
+        free(arr[i]);
+        i++;
+    }
+    free(arr);
+}
+
+/* free array in case of error */
+void    arr_error(char **arr, bool flag)
+{
+    int i;
+
+    i = 0;
+    if (flag)
+        free_arr(arr);
+    write(2, "Error\n", 6);
+    exit(1);
+}
+
 /* check that all inputs are integers */
-static int     check_int(int argc, char **argv)
+static int     check_int(char **arr)
 {
     int i;
     int e;
 
-    i = 1;
-    while (i < argc)
+    i = 0;
+    while (arr[i])
     {
         e = 0;
-        while (argv[i][e])
+        while (arr[i][e])
         {
-            if (argv[i][e] == '+' || argv[i][e] == '-')
+            if (arr[i][e] == '+' || arr[i][e] == '-')
                 e++;
-            if (!ft_isdigit(argv[i][e]))
+            if (!ft_isdigit(arr[i][e]))
                 return (0);
             e++;
         }
-        if (argv[i][e] != '\0')
+        if (arr[i][e] != '\0')
             return (0);
         i++;
     }
@@ -49,30 +75,34 @@ static long	    ft_atol(const char *str)
 	return (result * sign);
 }
 
-void    validate_input(int argc, char **argv)
+// clean up function
+char    **validate_input(int argc, char **argv)
 {
-    int     i;
-    long     num;
+    int i;
+    long    num;
+    char    **arr;
+    bool    flag;
 
-    i = 1;
+    i = -1;
     num = 0;
-    // if all inputs are integers, check they are within INT_MAX and INT_MIN
-    if (argc > 1 && (argv[1][0] != '\0') && check_int(argc, argv))
+    // is argv[1][0] correct
+    if (argc == 2 && (argv[1][0] != '\0'))
     {
-        while (i < argc)
+        arr = ft_split(argv[1], ' ');
+        flag = true;
+    } 
+    else
+        arr = argv + 1;
+    if (argc > 1 && arr[0] && check_int(arr))
+    {
+        while (arr[++i])
         {
-            num = ft_atol(argv[i]);
+            num = ft_atol(arr[i]);
             if (num < INT_MIN || num > INT_MAX)
-            {
-                write(2, "Error\n", 6);
-                exit(1);
-            }
-            i++;
+                arr_error(arr, flag);
         }
     }
     else
-    {
-        write(2, "Error\n", 6);
-        exit(1);
-    }
+        arr_error(arr, flag);
+    return (arr); 
 }

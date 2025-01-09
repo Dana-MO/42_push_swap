@@ -33,12 +33,14 @@ int     main(int argc, char **argv)
     t_stack     *b;
     t_stack     *temp_a;
     t_stack     *temp_b;
+    char    **arr;
 
     a = NULL;
     b = NULL;
-    // clean up validate input file
-    validate_input(argc, argv);
-    stack_init(&a, argc, argv);
+    arr = NULL;
+    
+    arr = validate_input(argc, argv);
+    stack_init(&a, argc, arr);
 
     // print stacks before change
     printf("Stacks Before\n");
@@ -49,7 +51,7 @@ int     main(int argc, char **argv)
 
     // print stacks after sorting
     printf("\nSorted\n");
-    sort(&a, &b);
+    sort(&a, &b); 
     temp_a = a;
     print_stack(temp_a);
     temp_b = b;

@@ -18,8 +18,9 @@ typedef struct n_stack
 	struct n_stack	*prev;
 }		t_stack;
 
-void    validate_input(int argc, char **argv);
-void    stack_init(t_stack **a, int argc, char **argv);
+void    free_arr(char **arr);
+char    **validate_input(int argc, char **argv);
+void    stack_init(t_stack **a, int argc, char **arr);
 void    check_dup(t_stack **a, int num);
 void    ft_stackclear(t_stack **stack);
 
