@@ -46,7 +46,6 @@ void    pa(t_stack **b, t_stack **a);
 void    pb(t_stack **a, t_stack **b);
 
 int     stack_len(t_stack *stack);
-void    smallest_node(t_stack **stack);
 t_stack    *find_max(t_stack *stack);
 t_stack    *find_min(t_stack *stack);
 
