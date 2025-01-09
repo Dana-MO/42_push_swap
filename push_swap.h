@@ -6,13 +6,6 @@
 #include <limits.h>
 #include <stdbool.h>
 
-// typedef struct n_stack
-// {
-// 	int             value;
-// 	struct n_stack	*next;
-// 	struct n_stack	*prev;
-// }		t_stack;
-
 typedef struct n_stack
 {
 	int             value;
