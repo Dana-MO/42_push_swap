@@ -14,7 +14,7 @@ int     stack_len(t_stack *stack)
     return (len);
 }
 
-/* find node with largest value */
+/* Find node with largest value */
 t_stack    *find_max(t_stack *stack)
 {
     t_stack *max;
@@ -31,7 +31,7 @@ t_stack    *find_max(t_stack *stack)
     return (max);
 }
 
-/* find node with smallest value */
+/* Find node with smallest value */
 t_stack    *find_min(t_stack *stack)
 {
     t_stack *min;
@@ -46,4 +46,16 @@ t_stack    *find_min(t_stack *stack)
         node = node->next;
     }
     return (min);
+}
+
+/* Check that integer with smallest values is at top of stack */
+void     min_on_top(t_stack **a)
+{
+    while ((*a)->value != find_min(*a)->value)
+    {
+        if (find_min(*a)->above_median)
+            ra(a);
+        else
+            rra(a);
+    }
 }

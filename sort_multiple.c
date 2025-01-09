@@ -47,16 +47,7 @@ static void     move_a_to_b(t_stack **a, t_stack **b, t_stack *cheapest_node)
     pb(a, b);
 }
 
-static void     min_on_top(t_stack **a)
-{
-    while ((*a)->value != find_min(*a)->value)
-    {
-        if (find_min(*a)->above_median)
-            ra(a);
-        else
-            rra(a);
-    }
-}
+
 
 void    sort_multiple(t_stack **a, t_stack **b, int stack_len)
 {

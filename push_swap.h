@@ -50,5 +50,6 @@ void    sort_multiple(t_stack **a, t_stack **b, int len);
 void       current_index(t_stack *stack);
 t_stack    *init_a_nodes(t_stack *a, t_stack *b);
 void    init_b_nodes(t_stack *a, t_stack *b);
+void     min_on_top(t_stack **a);
 
 #endif
