@@ -47,8 +47,6 @@ static void     move_a_to_b(t_stack **a, t_stack **b, t_stack *cheapest_node)
     pb(a, b);
 }
 
-
-
 void    sort_multiple(t_stack **a, t_stack **b, int stack_len)
 {
     t_stack *cheapest_node;
