@@ -52,6 +52,7 @@ static void     set_target_a(t_stack *a, t_stack *b)
 }
 
 /* assign each node in 'stack a' push cost */
+/* push cost is how many moves to get node to top of stack */
 static void     cost_analysis(t_stack *a, t_stack *b)
 {
     int len_a;
@@ -64,7 +65,6 @@ static void     cost_analysis(t_stack *a, t_stack *b)
         a->push_cost = a->index;
         if (!(a->above_median))
             a->push_cost = len_a - (a->index);
-        // I don't understand this part
         if (a->target_node->above_median)
             a->push_cost += a->target_node->index;
         else
