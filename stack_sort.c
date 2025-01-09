@@ -14,8 +14,7 @@ static void    mini_sort(t_stack **a)
         sa(a);
 }
 
-/* sort a stack of 3 nodes */
-// may come back to clean function 
+/* sort a stack of 3 nodes */ 
 void    sort_three(t_stack **a)
 {
     t_stack *node_one;
