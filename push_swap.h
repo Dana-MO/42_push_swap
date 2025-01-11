@@ -6,16 +6,16 @@
 #include <limits.h>
 #include <stdbool.h>
 
-typedef struct n_stack
+typedef struct s_stack
 {
 	int             value;
 	int				index;
 	int				push_cost;
 	bool			above_median;
 	bool			cheapest;
-	struct n_stack	*target_node;
-	struct n_stack	*next;
-	struct n_stack	*prev;
+	struct s_stack	*target_node;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }		t_stack;
 
 void    free_arr(char **arr);
