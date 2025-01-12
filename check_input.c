@@ -17,9 +17,6 @@ void    free_arr(char **arr)
 /* free array in case of error */
 void    arr_error(char **arr, bool flag)
 {
-    int i;
-
-    i = 0;
     if (flag)
         free_arr(arr);
     write(2, "Error\n", 6);
