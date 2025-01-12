@@ -7,6 +7,8 @@ void	free_arr(char **arr)
 	int	i;
 
 	i = 0;
+	if (!arr)
+		return ;
 	while (arr[i])
 	{
 		free(arr[i]);
@@ -33,6 +35,8 @@ static int	check_int(char **arr)
 	int	e;
 
 	i = 0;
+	if (!arr)
+		return (0);
 	while (arr[i])
 	{
 		e = 0;
