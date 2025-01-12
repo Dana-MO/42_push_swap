@@ -1,59 +1,63 @@
 #include "push_swap.h"
 
-/* free array */
-void    free_arr(char **arr)
-{
-    int i;
+/* free array from split function */
 
-    i = 0;
-    while (arr[i])
-    {
-        free(arr[i]);
-        i++;
-    }
-    free(arr);
+void	free_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
 
-/* free array in case of error */
-void    arr_error(char **arr, bool flag)
+/* free array if necessary, print error message */
+
+void	arr_error(char **arr, bool flag)
 {
-    if (flag)
-        free_arr(arr);
-    write(2, "Error\n", 6);
-    exit(1);
+	if (flag)
+		free_arr(arr);
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
 /* check that all inputs are integers */
-static int     check_int(char **arr)
-{
-    int i;
-    int e;
 
-    i = 0;
-    while (arr[i])
-    {
-        e = 0;
-        while (arr[i][e])
-        {
-            if (arr[i][e] == '+' || arr[i][e] == '-')
-                e++;
-            if (!ft_isdigit(arr[i][e]))
-                return (0);
-            e++;
-        }
-        if (arr[i][e] != '\0')
-            return (0);
-        i++;
-    }
-    return (1);
-}
-
-/* convert input to long */
-static long	    ft_atol(const char *str)
+static int	check_int(char **arr)
 {
 	int	i;
-	int	sign;
+	int	e;
+
+	i = 0;
+	while (arr[i])
+	{
+		e = 0;
+		while (arr[i][e])
+		{
+			if (arr[i][e] == '+' || arr[i][e] == '-')
+				e++;
+			if (!ft_isdigit(arr[i][e]))
+				return (0);
+			e++;
+		}
+		if (arr[i][e] != '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/* convert string to long int */
+
+static long	ft_atol(const char *str)
+{
 	long	result;
+	int		i;
+	int		sign;
 
 	i = 0;
 	sign = 1;
@@ -72,34 +76,32 @@ static long	    ft_atol(const char *str)
 	return (result * sign);
 }
 
-// clean up function
-char    **validate_input(int argc, char **argv)
-{
-    int i;
-    long    num;
-    char    **arr;
-    bool    flag;
+/* validate all inputs are integers within the range of an int */
 
-    i = -1;
-    num = 0;
-    // is argv[1][0] correct
-    if (argc == 2 && (argv[1][0] != '\0'))
-    {
-        arr = ft_split(argv[1], ' ');
-        flag = true;
-    } 
-    else
-        arr = argv + 1;
-    if (argc > 1 && arr[0] && check_int(arr))
-    {
-        while (arr[++i])
-        {
-            num = ft_atol(arr[i]);
-            if (num < INT_MIN || num > INT_MAX)
-                arr_error(arr, flag);
-        }
-    }
-    else
-        arr_error(arr, flag);
-    return (arr); 
+char	**validate_input(int argc, char **argv)
+{
+	long	num;
+	bool	flag;
+	char	**arr;
+	int		i;
+
+	i = -1;
+	num = 0;
+	flag = false;
+	if (argc == 2 && argv[1] && (argv[1][0] != '\0'))
+	{
+		arr = ft_split(argv[1], ' ');
+		flag = true;
+	}
+	else
+		arr = argv + 1;
+	if (!arr || !arr[0] || !check_int(arr))
+		arr_error(arr, flag);
+	while (arr[++i])
+	{
+		num = ft_atol(arr[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			arr_error(arr, flag);
+	}
+	return (arr);
 }
