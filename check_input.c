@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-/* free array from split function */
+/* Free array from split function */
 
 void	free_arr(char **arr)
 {
@@ -17,7 +17,7 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-/* free array if necessary, print error message */
+/* Free array if necessary, print error message */
 
 void	error_msg(char **arr, bool is_dynamic)
 {
@@ -27,7 +27,7 @@ void	error_msg(char **arr, bool is_dynamic)
 	exit(1);
 }
 
-/* check that all inputs are integers */
+/* Check that all inputs are integers */
 
 static int	check_int(char **arr)
 {
@@ -55,7 +55,7 @@ static int	check_int(char **arr)
 	return (1);
 }
 
-/* convert string to long int */
+/* Convert string to long int */
 
 static long	ft_atol(const char *str)
 {
@@ -80,7 +80,7 @@ static long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-/* validate all inputs are integers within the range of an int */
+/* Check that all inputs are integers within the range of an int */
 
 char	**validate_input(int argc, char **argv)
 {
