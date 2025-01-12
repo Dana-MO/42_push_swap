@@ -1,46 +1,48 @@
 #include "push_swap.h"
 
-static void rotate(t_stack **stack)
-{
-    t_stack *new_head;
-    t_stack *old_head;
-    t_stack *last_node;
+/* Rotate up by 1 all nodes in a stack, first node becomes last */
 
-    if (!*stack || !(*stack)->next)
-        return ;
-    old_head = *stack;
-    new_head = old_head->next;
-    new_head->prev = NULL;
-    // we could add a helper function for the last node
-    last_node = new_head;
-    while (last_node->next)
-        last_node = last_node->next;
-    last_node->next = old_head;
-    old_head->prev = last_node;
-    old_head->next = NULL;
-    *stack = new_head;
+static void	rotate(t_stack **stack)
+{
+	t_stack	*new_head;
+	t_stack	*old_head;
+	t_stack	*last_node;
+
+	if (!*stack || !(*stack)->next)
+		return ;
+	old_head = *stack;
+	new_head = old_head->next;
+	new_head->prev = NULL;
+	last_node = new_head;
+	while (last_node->next)
+		last_node = last_node->next;
+	last_node->next = old_head;
+	old_head->prev = last_node;
+	old_head->next = NULL;
+	*stack = new_head;
 }
 
-/* Shift up all elements of stack a by 1, first element becomes last */
-void    ra(t_stack **a)
+/* Shift up all nodes of `stack a` by 1, first node becomes last */
+
+void	ra(t_stack **a)
 {
-    rotate(a);
-    write(1, "ra\n", 3);
+	rotate(a);
+	write(1, "ra\n", 3);
 }
 
-/* Shift up all elements of stack b by 1, first element becomes last */
-// test function
-void    rb(t_stack **b)
+/* Shift up all nodes of `stack b` by 1, first node becomes last */
+
+void	rb(t_stack **b)
 {
-    rotate(b);
-    write(1, "rb\n", 3);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
-/* Shift up all elements of stack a and stack b */
-// test function
-void    rr(t_stack **a, t_stack **b)
+/* Shift up by 1 all nodes of both stacks, first nodes become last */
+
+void	rr(t_stack **a, t_stack **b)
 {
-    rotate(a);
-    rotate(b);
-    write(1, "rr\n", 3);
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }
