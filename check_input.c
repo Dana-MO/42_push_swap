@@ -17,9 +17,9 @@ void	free_arr(char **arr)
 
 /* free array if necessary, print error message */
 
-void	arr_error(char **arr, bool flag)
+void	error_msg(char **arr, bool is_dynamic)
 {
-	if (flag)
+	if (is_dynamic)
 		free_arr(arr);
 	write(2, "Error\n", 6);
 	exit(1);
@@ -81,27 +81,27 @@ static long	ft_atol(const char *str)
 char	**validate_input(int argc, char **argv)
 {
 	long	num;
-	bool	flag;
+	bool	is_dynamic;
 	char	**arr;
 	int		i;
 
 	i = -1;
 	num = 0;
-	flag = false;
+	is_dynamic = false;
 	if (argc == 2 && argv[1] && (argv[1][0] != '\0'))
 	{
 		arr = ft_split(argv[1], ' ');
-		flag = true;
+		is_dynamic = true;
 	}
 	else
 		arr = argv + 1;
 	if (!arr || !arr[0] || !check_int(arr))
-		arr_error(arr, flag);
+		error_msg(arr, is_dynamic);
 	while (arr[++i])
 	{
 		num = ft_atol(arr[i]);
 		if (num < INT_MIN || num > INT_MAX)
-			arr_error(arr, flag);
+			error_msg(arr, is_dynamic);
 	}
 	return (arr);
 }
