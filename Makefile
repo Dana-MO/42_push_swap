@@ -4,7 +4,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_OBJS = $(LIBFT_DIR)/*.o
 
-SRC = main.c stack_init.c init_a_nodes.c init_b_nodes.c stack_sort.c sort_multiple.c \
+SRC = main.c stack_init.c init_a_nodes.c init_b_nodes.c sort_stack.c sort_multiple.c \
 		stack_utils.c check_input.c stack_push.c stack_reverse.c stack_rotate.c stack_swap.c
 
 OBJ =  $(SRC:%.c=%.o)
