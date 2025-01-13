@@ -1,14 +1,14 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <limits.h>
-#include <stdbool.h>
+# include "libft/libft.h"
+# include <stdlib.h>
+# include <limits.h>
+# include <stdbool.h>
 
 typedef struct s_stack
 {
-	int             value;
+	int				value;
 	int				index;
 	int				push_cost;
 	bool			above_median;
@@ -18,39 +18,52 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }		t_stack;
 
-void    free_arr(char **arr);
-char    **validate_input(int argc, char **argv);
-void    stack_init(t_stack **a, int argc, char **arr);
-void    check_dup(t_stack **a, int num);
-void    ft_stackclear(t_stack **stack);
+/* Check Input and Initiate Stack*/
 
-void    sa(t_stack **a);
-void    sb(t_stack **b);
-void    ss(t_stack **a, t_stack **b);
+int		check_sort(t_stack *a);
+char	**validate_input(int argc, char **argv);
+void	stack_init(t_stack **a, int argc, char **arr);
 
-void    ra(t_stack **a);
-void    rb(t_stack **b);
-void    rr(t_stack **a, t_stack **b);
+/* Free Array/Stack and Return Error Message */
 
-void    rra(t_stack **a);
-void    rrb(t_stack **b);
-void    rrr(t_stack **a, t_stack **b);
+void	free_arr(char **arr);
+void	ft_stackclear(t_stack **stack);
+void	error_msg(char **arr, bool is_dynamic);
 
-void    pa(t_stack **b, t_stack **a);
-void    pb(t_stack **a, t_stack **b);
+/* Stack Commands */
 
-int     stack_len(t_stack *stack);
-t_stack    *find_max(t_stack *stack);
-t_stack    *find_min(t_stack *stack);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
 
-void    check_sort(t_stack *a);
-void    sort(t_stack **a, t_stack **b);
-void    sort_three(t_stack **a);
-void    sort_multiple(t_stack **a, t_stack **b, int len);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
 
-void       current_index(t_stack *stack);
-t_stack    *init_a_nodes(t_stack *a, t_stack *b);
-void    init_b_nodes(t_stack *a, t_stack *b);
-void     min_on_top(t_stack **a);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
+
+void	pa(t_stack **b, t_stack **a);
+void	pb(t_stack **a, t_stack **b);
+
+/* Stack Utilities */
+
+int		stack_len(t_stack *stack);
+t_stack	*find_max(t_stack *stack);
+t_stack	*find_min(t_stack *stack);
+
+/* Sort Stack */
+
+void	sort_stack(t_stack **a, t_stack **b);
+void	sort_three(t_stack **a);
+void	sort_multiple(t_stack **a, t_stack **b, int len);
+
+/* Initiate Nodes for Sorting */
+
+t_stack	*init_a_nodes(t_stack *a, t_stack *b);
+void	init_b_nodes(t_stack *a, t_stack *b);
+void	current_index(t_stack *stack);
+void	min_on_top(t_stack **a);
 
 #endif
