@@ -1,24 +1,5 @@
 #include "push_swap.h"
 
-/* Add node to top of the stack */
-
-static void	ft_stackadd_top(t_stack **stack, t_stack *node)
-{
-	t_stack	*temp;
-
-	if (stack && node)
-	{
-		node->next = *stack;
-		*stack = node;
-	}
-	if ((*stack)->next)
-	{
-		temp = *stack;
-		temp = temp->next;
-		temp->prev = *stack;
-	}
-}
-
 /* Move top 1st node from one stack to another */
 
 static void	push(t_stack **stack_one, t_stack **stack_two)
@@ -35,7 +16,10 @@ static void	push(t_stack **stack_one, t_stack **stack_two)
 	}
 	else
 		*stack_one = NULL;
-	ft_stackadd_top(stack_two, node);
+	node->next = *stack_two;
+	*stack_two = node;
+	if ((*stack_two)->next)
+		(*stack_two)->next->prev = *stack_two;
 }
 
 /* Move top 1st node in `stack b` to top of `stack a` */
