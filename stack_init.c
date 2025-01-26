@@ -1,24 +1,5 @@
 #include "push_swap.h"
 
-/* Free stack */
-
-void	ft_stackclear(t_stack **stack)
-{
-	t_stack	*current;
-	t_stack	*temp;
-
-	if (!stack)
-		return ;
-	current = *stack;
-	while (current != NULL)
-	{
-		temp = current;
-		current = current->next;
-		free(temp);
-	}
-	*stack = NULL;
-}
-
 /* Create new node */
 
 static t_stack	*ft_createnode(int value)
