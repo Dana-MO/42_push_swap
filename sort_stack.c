@@ -41,21 +41,6 @@ void	sort_three(t_stack **a)
 	}
 }
 
-/* Check if stack is sorted */
-
-int	check_sort(t_stack *a)
-{
-	if (!a)
-		return (0);
-	while (a)
-	{
-		if (a->next != NULL && a->value > a->next->value)
-			return (0);
-		a = a->next;
-	}
-	return (1);
-}
-
 /* Sort stack based on number of nodes in stack */
 
 void	sort_stack(t_stack **a, t_stack **b)
