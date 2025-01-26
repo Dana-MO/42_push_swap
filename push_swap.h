@@ -27,7 +27,7 @@ void	stack_init(t_stack **a, int argc, char **arr);
 /* Free Array/Stack and Return Error Message */
 
 void	free_arr(char **arr);
-void	ft_stackclear(t_stack **stack);
+void	ft_stack_clear(t_stack **stack);
 void	error_msg(char **arr, bool is_dynamic);
 
 /* Stack Commands */

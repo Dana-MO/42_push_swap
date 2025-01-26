@@ -2,7 +2,7 @@
 
 /* Create new node */
 
-static t_stack	*ft_createnode(int value)
+static t_stack	*ft_create_node(int value)
 {
 	t_stack	*node;
 
@@ -21,7 +21,7 @@ static t_stack	*ft_createnode(int value)
 
 /* Add new node to end of stack */
 
-static void	ft_stackadd_back(t_stack **stack, t_stack *new_node)
+static void	ft_stack_add_back(t_stack **stack, t_stack *new_node)
 {
 	t_stack	*last_node;
 
@@ -52,7 +52,7 @@ static void	check_dup(t_stack **a, int num, char **arr, bool is_dynamic)
 	{
 		if (temp->value == num)
 		{
-			ft_stackclear(a);
+			ft_stack_clear(a);
 			error_msg(arr, is_dynamic);
 		}
 		temp = temp->next;
@@ -76,13 +76,13 @@ void	stack_init(t_stack **a, int argc, char **arr)
 	{
 		num = ft_atoi(arr[i]);
 		check_dup(a, num, arr, is_dynamic);
-		node = ft_createnode(num);
+		node = ft_create_node(num);
 		if (!node)
 		{
-			ft_stackclear(a);
+			ft_stack_clear(a);
 			break ;
 		}
-		ft_stackadd_back(a, node);
+		ft_stack_add_back(a, node);
 		i++;
 	}
 	if (is_dynamic)

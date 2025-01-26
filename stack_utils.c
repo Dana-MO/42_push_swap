@@ -2,7 +2,7 @@
 
 /* Free stack */
 
-void	ft_stackclear(t_stack **stack)
+void	ft_stack_clear(t_stack **stack)
 {
 	t_stack	*current;
 	t_stack	*temp;
